@@ -1,96 +1,249 @@
+// Importing Montserrat font faces
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+// Root font settings
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+// Reset default styles for various elements
+body,
+h1,
+ul,
+li,
+a,
+html {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-#app {
-  max-width: 1280px;
+// Container for the entire app, centered and with a max width
+.container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
+// Header style
+.range-header {
+  font-size: 24px;
+  margin-top: 20px;
 }
 
-.card {
-  padding: 2em;
-}
+// Car image container
+.car-image {
+  position: relative;
 
-.read-the-docs {
-  color: #888;
-}
+  // Wheel spinning animations
+  .wheel {
+    animation: spin 2s infinite linear;
+    position: absolute;
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+    &#wheel-left {
+      bottom: 18%;
+      left: 35.2%;
+    }
+    &#wheel-right {
+      bottom: 18%;
+      right: 36.3%;
+    }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+    // Animation keyframes for spinning
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
   }
-  a:hover {
-    color: #747bff;
+}
+
+// Display for the vehicle range information
+.range-display {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+
+  // Individual model range container
+  .model-range {
+    margin: 0 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+
+    // Image for the model type
+    img {
+      display: block; // Ensure the image is on its own line
+      margin: 0 auto; // Center the image
+    }
+
+    // Range number styling
+    .kilometers {
+      font-weight: 100;
+      color: #007bff;
+      font-size: 2rem;
+    }
+
+    // Unit (KM) styling as superscript
+    .km {
+      font-weight: 100;
+      color: #007bff;
+      font-size: 0.75rem;
+      vertical-align: super;
+    }
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+// Controls for speed, temperature, AC, and wheels
+.controls {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+
+  // Individual control styling
+  .control {
+    margin: 0 10px;
+
+    // Label styling
+    label {
+      display: block;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    // Input group styling
+    .input-group {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden; // Hide inner elements overflow
+
+      // Input field styling
+      input {
+        border: none;
+        padding: 0.5rem;
+        width: 3rem;
+        text-align: center;
+        outline: none; // Hide the outline
+      }
+
+      // Input group text unit styling
+      .input-group-text {
+        background-color: #f9f9f9;
+        padding: 0.5rem;
+        border-left: 1px solid #ccc;
+      }
+
+      // Button styling for increment and decrement
+      .button-up,
+      .button-down {
+        background-color: #f9f9f9;
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+
+        // Hover effect for buttons
+        &:hover {
+          background-color: #e6e6e6;
+        }
+      }
+    }
+  }
+}
+
+// Disclaimer text styling
+.disclaimer {
+  font-size: 12px;
+  color: grey;
+  margin-top: 20px;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  // Make range display and controls stack vertically on smaller screens
+  .range-display,
+  .controls {
+    flex-direction: column;
+  }
+
+  // Full width buttons for controls on smaller screens
+  .input-group .input-group-text,
+  .input-group .button-up,
+  .input-group .button-down {
+    display: block;
+    width: 100%;
+  }
+
+  // Wheel control adjustments
+  .wheel-size {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+// Wheel control specific styling
+.wheel-control {
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  // Wheel size button styling
+  .wheel-size {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    // Wheel image styling
+    img {
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+
+    // Selected wheel size button styling
+    &.selected {
+      border-color: #007bff;
+    }
+
+    // Hover effect for non-selected buttons
+    &:not(.selected):hover {
+      border-color: #007bff;
+    }
   }
 }
