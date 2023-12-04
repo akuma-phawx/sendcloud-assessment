@@ -1,22 +1,6 @@
 // Import styles
 import "../styles/main.scss";
-
-// Define type for a single highway data point
-interface HighwayData {
-  kmh: number;
-  kilometers: number;
-}
-
-// Define type for the range data
-interface RangeData {
-  temp: number;
-  wheelsize: number;
-  ac: string;
-  hwy: HighwayData[];
-}
-
-// Define type for the vehicle model data array
-type VehicleModelData = RangeData[];
+import { VehicleModelData } from "../types/tesla.ts";
 
 // Store the loaded data
 let data100D: VehicleModelData = [];
@@ -111,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadData();
 
   // Update the range display after a short delay to ensure data has loaded
-  setTimeout(updateRangeDisplay, 1000); // Adjust this delay based on your fetch performance
+  setTimeout(updateRangeDisplay, 500);
 
   // Event listeners for speed and temperature controls
   const buttonUpSpeed = document.querySelector(

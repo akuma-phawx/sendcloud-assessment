@@ -6,17 +6,18 @@ Welcome to the Tesla Range Calculator - Frontend Assessment for Sendcloud! This 
 
 tesla-range-calculator/
 │
-├── data/ - Contains JSON files with range data for different models.
-│ ├── metric-100D.json
-│ └── metric-P100D.json
 │
-├── public/ - Public assets like fonts and images.
+├── public/ - Public assets like fonts and images and json data.
 │ ├── fonts/
 │ └── images/
+│ └── data/
 │
 ├── src/ - Source code for the application.
 │ ├── main.ts - Main TypeScript file with application logic.
 │ └── vite-env.d.ts - Type definitions for Vite.
+│
+├── types/ - App specific defined types.
+│ └── tesla.ts
 │
 ├── styles/ - SCSS styles for the application.
 │ └── main.scss - Main stylesheet written in SCSS.
