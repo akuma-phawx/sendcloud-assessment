@@ -3,137 +3,174 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Interactive Tesla Range Calculator for estimating range per charge based on various conditions."
+    />
     <title>Tesla Range Calculator</title>
-    <!-- Link to the main stylesheet -->
     <link rel="stylesheet" href="/styles/main.css" />
   </head>
   <body>
-    <!-- Main container for the application -->
-    <div class="container">
-      <!-- Header displaying the feature title -->
-      <div class="range-header">Range per Charge</div>
+    <header class="container">
+      <h1 class="range-header">Range per Charge</h1>
+    </header>
 
-      <!-- Car image container -->
-      <div class="car-image">
-        <img src="/images/car-base.png" alt="Tesla Model" id="car" />
-        <!-- Wheels with animation -->
+    <main class="container">
+      <section class="car-image">
+        <img
+          src="/images/car-base.png"
+          alt="Tesla Model"
+          id="car"
+          aria-role="presentation"
+        />
         <img
           src="/images/car-wheel.png"
           class="wheel"
-          alt="Wheel"
+          alt="Left Wheel"
           id="wheel-left"
+          aria-role="presentation"
         />
         <img
           src="/images/car-wheel.png"
           class="wheel"
-          alt="Wheel"
+          alt="Right Wheel"
           id="wheel-right"
+          aria-role="presentation"
         />
-      </div>
+      </section>
 
-      <!-- Range display for each model -->
-      <div class="range-display">
-        <div class="model-range" id="100D-range">
+      <section class="range-display">
+        <article class="model-range" id="100D-range">
           <img src="/images/100d.png" alt="100D Model" />
           <div class="model-range-inner-container">
             <span id="100d-kms" class="kilometers">0</span>
             <sup class="km">KM</sup>
           </div>
-        </div>
-        <div class="model-range" id="P100D-range">
+        </article>
+        <article class="model-range" id="P100D-range">
           <img src="/images/p100d.png" alt="P100D Model" />
           <div class="model-range-inner-container">
             <span id="p100d-kms" class="kilometers">0</span>
             <sup class="km">KM</sup>
           </div>
-        </div>
-      </div>
+        </article>
+      </section>
 
-      <!-- Vehicle controls for speed, temperature, AC, and wheel size -->
-      <div class="controls">
-        <!-- Speed control -->
-        <div class="control speed-control">
-          <label for="speed">Speed</label>
-          <div class="input-group">
-            <input type="text" id="speed" value="70" readonly />
-            <div class="input-group-append">
-              <span class="input-group-text">KMH</span>
-              <button class="button-up-speed">
-                <img
-                  src="/images/icon-thin-chevron-up.svg"
-                  alt="Increase speed"
-                />
-              </button>
-              <button class="button-down-speed">
-                <img
-                  src="/images/icon-thin-chevron-down.svg"
-                  alt="Decrease speed"
-                />
-              </button>
+      <section class="controls">
+        <form id="range-controls-form" action="#">
+          <fieldset class="speed-control">
+            <legend>Speed</legend>
+            <div class="input-group">
+              <input type="text" id="speed" name="speed" value="70" readonly />
+              <div class="input-group-append">
+                <span class="input-group-text">KMH</span>
+                <button
+                  type="button"
+                  class="button-up-speed"
+                  aria-label="Increase speed"
+                >
+                  <img
+                    src="/images/icon-thin-chevron-up.svg"
+                    alt="Increase speed"
+                  />
+                </button>
+                <button
+                  type="button"
+                  class="button-down-speed"
+                  aria-label="Decrease speed"
+                >
+                  <img
+                    src="/images/icon-thin-chevron-down.svg"
+                    alt="Decrease speed"
+                  />
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
+          </fieldset>
 
-        <!-- Temperature control -->
-        <div class="control temp-control">
-          <label for="temperature">Outside Temperature</label>
-          <div class="input-group">
-            <input
-              type="number"
-              id="temperature"
-              min="-10"
-              max="40"
-              step="10"
-              value="20"
-            />
-            <div class="input-group-append">
-              <span>°C</span>
-              <button class="button-up-temperature">
-                <img
-                  src="/images/icon-thin-chevron-up.svg"
-                  alt="Increase temperature"
-                />
-              </button>
-              <button class="button-down-temperature">
-                <img
-                  src="/images/icon-thin-chevron-down.svg"
-                  alt="Decrease temperature"
-                />
-              </button>
+          <fieldset class="temp-control">
+            <legend>Outside Temperature</legend>
+            <div class="input-group">
+              <input
+                type="number"
+                id="temperature"
+                name="temperature"
+                min="-10"
+                max="40"
+                step="10"
+                value="20"
+              />
+              <div class="input-group-append">
+                <span>°C</span>
+                <button
+                  type="button"
+                  class="button-up-temperature"
+                  aria-label="Increase temperature"
+                >
+                  <img
+                    src="/images/icon-thin-chevron-up.svg"
+                    alt="Increase temperature"
+                  />
+                </button>
+                <button
+                  type="button"
+                  class="button-down-temperature"
+                  aria-label="Decrease temperature"
+                >
+                  <img
+                    src="/images/icon-thin-chevron-down.svg"
+                    alt="Decrease temperature"
+                  />
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
+          </fieldset>
 
-        <!-- AC toggle -->
-        <div class="control ac-control">
-          <label for="acToggle">AC</label>
-          <input type="checkbox" id="acToggle" />
-        </div>
+          <fieldset class="ac-control">
+            <legend>AC</legend>
+            <input type="checkbox" id="acToggle" name="ac" />
+          </fieldset>
 
-        <!-- Wheel size control -->
-        <div class="control wheel-control">
-          <label>Wheels</label>
-          <button class="wheel-size selected" id="wheel19">
-            <img src="/images/icon-wheel.svg" alt="19 inch wheel" />19"
-          </button>
-          <button class="wheel-size" id="wheel21">
-            <img src="/images/icon-wheel.svg" alt="21 inch wheel" />21"
-          </button>
-        </div>
-      </div>
+          <fieldset class="wheel-control">
+            <legend>Wheels</legend>
+            <button
+              type="button"
+              class="wheel-size selected"
+              id="wheel19"
+              aria-label="Select 19 inch wheels"
+            >
+              <img src="/images/icon-wheel.svg" alt="19 inch wheel" />19"
+            </button>
+            <button
+              type="button"
+              class="wheel-size"
+              id="wheel21"
+              aria-label="Select 21 inch wheels"
+            >
+              <img src="/images/icon-wheel.svg" alt="21 inch wheel" />21"
+            </button>
+          </fieldset>
+        </form>
+      </section>
+    </main>
 
-      <!-- Disclaimer about range variability -->
-      <div class="disclaimer">
+    <footer class="container">
+      <p class="disclaimer">
         The actual amount of range that you experience will vary based on your
         particular use conditions. Your vehicle range is also dependent on other
         conditions, such as vehicle configuration, battery age and condition,
         driving style and operating, environmental and climate conditions. See
         how some of these particular use conditions may affect your range in our
         simulation model.
-      </div>
-    </div>
+      </p>
+    </footer>
 
-    <!-- Link to the main TypeScript file -->
     <script type="module" src="/src/main.ts"></script>
+    <noscript>
+      <div class="alert">
+        For the full range calculator experience, please enable JavaScript in
+        your browser.
+      </div>
+    </noscript>
   </body>
 </html>

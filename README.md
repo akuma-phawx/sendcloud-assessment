@@ -4,29 +4,24 @@ Welcome to the Tesla Range Calculator - Frontend Assessment for Sendcloud! This 
 
 ## Project Structure 📂
 
-tesla-range-calculator/
-│
-│
-├── public/ - Public assets like fonts and images and json data.
-│ ├── fonts/
-│ └── images/
-│ └── data/
-│
-├── src/ - Source code for the application.
-│ ├── main.ts - Main TypeScript file with application logic.
-│ └── vite-env.d.ts - Type definitions for Vite.
-│
-├── types/ - App specific defined types.
-│ └── tesla.ts
-│
-├── styles/ - SCSS styles for the application.
-│ └── main.scss - Main stylesheet written in SCSS.
-│
-├── index.html - Entry point HTML file.
-├── package.json - Project metadata and dependencies.
-├── README.md - Documentation for the project.
-├── tsconfig.json - TypeScript configuration file.
-└── yarn.lock - Yarn lockfile for dependencies.
+The project structure is laid out as follows:
+
+- `public/`: Contains public assets.
+  - `fonts/`: Font files.
+  - `images/`: Image files.
+  - `data/`: JSON files with the range data.
+- `src/`: Source code of the application.
+  - `main.ts`: The main TypeScript entry file.
+  - `vite-env.d.ts`: Type definitions for Vite environment.
+- `types/`: Type definitions specific to the application.
+  - `tesla.ts`: Tesla model-specific type definitions.
+- `styles/`: SCSS stylesheets.
+  - `main.scss`: Main stylesheet for the application.
+- `index.html`: Entry point HTML file.
+- `package.json`: Project metadata and dependencies.
+- `README.md`: Documentation of the project.
+- `tsconfig.json`: TypeScript configuration file.
+- `yarn.lock`: Yarn lockfile for dependencies.
 
 ## Features ✨
 
