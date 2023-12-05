@@ -247,3 +247,8 @@ html {
     }
   }
 }
+
+.wheel.larger-wheel {
+  transform: scale(1.05); /* Adjust scale as needed */
+  transition: transform 0.3s ease; /* Smooth transition for the scaling */
+}

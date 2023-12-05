@@ -112,7 +112,9 @@ document.addEventListener("DOMContentLoaded", () => {
   ) as HTMLButtonElement;
   const wheels = document.querySelectorAll(".wheel-size");
   const acToggle = document.getElementById("acToggle") as HTMLInputElement;
-
+  const acToggleStatus = document.querySelector(
+    ".ac-status"
+  ) as HTMLSpanElement;
   // Add event listeners to all control buttons
   buttonUpSpeed.addEventListener("click", () => {
     updateSpeed(10);
@@ -131,7 +133,10 @@ document.addEventListener("DOMContentLoaded", () => {
     updateRangeDisplay();
   });
   // Event listener for AC toggle
-  acToggle.addEventListener("change", () => {
+  acToggle.addEventListener("change", (event: Event) => {
+    (event.target as HTMLInputElement).checked
+      ? (acToggleStatus.innerText = "ON")
+      : (acToggleStatus.innerText = "OFF");
     updateRangeDisplay(); // Call updateRangeDisplay when AC state changes
   });
   // Add click event listeners to wheel size buttons
