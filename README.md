@@ -1,4 +1,4 @@
-# Tesla Range Calculator 🚗⚡
+# Tesla Range Calculator 🚗⚡ !
 
 Welcome to the Tesla Range Calculator - Frontend Assessment for Sendcloud! This application simulates the range of Tesla Model S variants (100D and P100D) under various conditions, including speed, temperature, air conditioning usage, and wheel size. It's built with modern web technologies to provide a responsive and interactive user experience.
 
